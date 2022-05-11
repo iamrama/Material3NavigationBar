@@ -1,0 +1,67 @@
+import com.rk.material3_navigationbar.buildSrc.libs
+
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+}
+
+android {
+    namespace 'com.rk.material3_navigationbar'
+    compileSdk 32
+
+    defaultConfig {
+        applicationId "com.rk.material3_navigationbar"
+        minSdk 21
+        targetSdk 32
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        vectorDrawables {
+            useSupportLibrary true
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    buildFeatures {
+        compose true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion '1.1.1'
+    }
+    packagingOptions {
+        resources {
+            excludes += '/META-INF/{AL2.0,LGPL2.1}'
+        }
+    }
+}
+
+dependencies {
+
+    implementation libs.KotlinLibs.kotlinCore
+    implementation libs.KotlinLibs.ktxLifeCycle
+    implementation libs.AndroidX.Activity.activityCompose
+    implementation libs.AndroidX.Compose.ui
+    implementation libs.AndroidX.Compose.toolingPreview
+    implementation libs.AndroidX.MaterialUI.materialUI
+    implementation libs.AndroidX.Navigation.navigationRunTime
+    testImplementation libs.JUnit.junit
+    androidTestImplementation libs.JUnit.jUnitExt
+    androidTestImplementation libs.AndroidX.Test.espressoCore
+    androidTestImplementation libs.AndroidX.Compose.uiTest
+    debugImplementation libs.AndroidX.Compose.tooling
+    debugImplementation libs.AndroidX.Compose.debugUiTest
+    implementation libs.AndroidX.Navigation.navigationCompose
+}
